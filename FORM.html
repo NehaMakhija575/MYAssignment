@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admission Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+
+        .form-container {
+            width: 300px;
+            margin: 0 auto;
+        }
+
+        input[type="text"], input[type="button"] {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+        }
+
+        .output {
+            margin-top: 20px;
+            padding: 10px;
+            border: 1px solid #ddd;
+            background-color: #f4f4f4;
+        }
+
+        .error {
+            color: red;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="form-container">
+        <h2>Admission Form</h2>
+
+        <form id="admissionForm">
+            <label for="studentName"> Name:</label>
+            <input type="text" id="studentName" placeholder="Student Name" required><br>
+            <label for="studentName">Roll No:</label>
+            <input type="text" id="rollNumber" placeholder="Roll Number" required><br>
+            <label for="studentName">Course:</label>
+            <input type="text" id="course" placeholder="Course" required><br>
+            <label for="studentName">Year of Study:</label>
+            <input type="text" id="yearOfStudy" placeholder="Year of Study" required><br>
+            <label for="studentName">Date of Birth:</label>
+            <input type="text" id="dob" placeholder="Date of Birth" required><br>
+            <label for="studentName">Email:</label>
+            <input type="text" id="email" placeholder="Email Address" required><br>
+            <label for="studentName">Phone Number:</label>
+            <input type="text" id="phoneNumber" placeholder="Phone Number" required><br>
+            <label for="studentName">Address:</label>
+            <input type="text" id="address" placeholder="Address" required><br>
+            <label for="studentName">City:</label>
+            <input type="text" id="city" placeholder="City" required><br>
+            <label for="studentName">State:</label>
+            <input type="text" id="state" placeholder="State" required><br>
+            <label for="studentName">Country:</label>
+            <input type="text" id="country" placeholder="Country" required><br>
+
+            <input type="button" value="Submit" onclick="handleSubmit()">
+        </form>
+
+        <div id="errorMessage" class="error"></div>
+
+        <div id="output" class="output"></div>
+    </div>
+
+    <script>
+        function handleSubmit() {
+            // Clear previous output and error message
+            document.getElementById("output").innerHTML = '';
+            document.getElementById("errorMessage").innerHTML = '';
+
+            // Get the value from each input field
+            var studentName = document.getElementById("studentName").value;
+            var rollNumber = document.getElementById("rollNumber").value;
+            var course = document.getElementById("course").value;
+            var yearOfStudy = document.getElementById("yearOfStudy").value;
+            var dob = document.getElementById("dob").value;
+            var email = document.getElementById("email").value;
+            var phoneNumber = document.getElementById("phoneNumber").value;
+            var address = document.getElementById("address").value;
+            var city = document.getElementById("city").value;
+            var state = document.getElementById("state").value;
+            var country = document.getElementById("country").value;
+
+            // Validate: Check if any field is empty
+            if (studentName === "" || rollNumber === "" || course === "" || yearOfStudy === "" || dob === "" ||
+                email === "" || phoneNumber === "" || address === "" || city === "" || state === "" || country === "") {
+                document.getElementById("errorMessage").innerHTML = "All fields are required!";
+                return;
+            }
+
+            // Convert all values to uppercase
+            studentName = studentName.toUpperCase();
+            rollNumber = rollNumber.toUpperCase();
+            course = course.toUpperCase();
+            yearOfStudy = yearOfStudy.toUpperCase();
+            dob = dob.toUpperCase();
+            email = email.toUpperCase();
+            phoneNumber = phoneNumber.toUpperCase();
+            address = address.toUpperCase();
+            city = city.toUpperCase();
+            state = state.toUpperCase();
+            country = country.toUpperCase();
+
+            // Display the result in uppercase
+            var outputHtml = "<h3>Admission Details in Uppercase:</h3>";
+            outputHtml += "<p><strong>Student Name:</strong> " + studentName + "</p>";
+            outputHtml += "<p><strong>Roll Number:</strong> " + rollNumber + "</p>";
+            outputHtml += "<p><strong>Course:</strong> " + course + "</p>";
+            outputHtml += "<p><strong>Year of Study:</strong> " + yearOfStudy + "</p>";
+            outputHtml += "<p><strong>Date of Birth:</strong> " + dob + "</p>";
+            outputHtml += "<p><strong>Email Address:</strong> " + email + "</p>";
+            outputHtml += "<p><strong>Phone Number:</strong> " + phoneNumber + "</p>";
+            outputHtml += "<p><strong>Address:</strong> " + address + "</p>";
+            outputHtml += "<p><strong>City:</strong> " + city + "</p>";
+            outputHtml += "<p><strong>State:</strong> " + state + "</p>";
+            outputHtml += "<p><strong>Country:</strong> " + country + "</p>";
+
+            document.getElementById("output").innerHTML = outputHtml;
+        }
+    </script>
+
+</body>
+</html>
